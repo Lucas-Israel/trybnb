@@ -1,6 +1,5 @@
 package com.betrybe.trybnb.data.network
 
-import android.util.Log
 import com.betrybe.trybnb.data.api.ApiServiceClient
 import com.betrybe.trybnb.data.models.LoginBody
 import com.betrybe.trybnb.data.models.Token

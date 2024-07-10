@@ -8,4 +8,9 @@
     <string name="email_empty_warning">O campo Login é obrigatório</string>
     <string name="password_empty_warning">O campo Password é obrigatório</string>
     <string name="login_feito_com_sucesso">Login feito com sucesso!</string>
+    <string name="nome_do_hospede">Nome do Hóspede</string>
+    <string name="checkin">Checkin</string>
+    <string name="simbolo_de_moeda">R$</string>
+    <string name="informacoes_adicionais">Informações Adicionais</string>
+    <string name="checkout">Checkout</string>
 </resources>
