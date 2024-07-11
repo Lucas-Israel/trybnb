@@ -1,7 +1,7 @@
 package com.betrybe.trybnb.data.repository
 
 import com.betrybe.trybnb.data.models.Response
-import com.betrybe.trybnb.data.models.Token
+import com.betrybe.trybnb.data.api.model.Token
 import com.betrybe.trybnb.data.network.LoginDataSource
 import java.net.ConnectException
 

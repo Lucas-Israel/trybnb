@@ -1,8 +1,8 @@
 package com.betrybe.trybnb.data.network
 
 import com.betrybe.trybnb.data.api.ApiServiceClient
-import com.betrybe.trybnb.data.models.LoginBody
-import com.betrybe.trybnb.data.models.Token
+import com.betrybe.trybnb.data.api.model.LoginBody
+import com.betrybe.trybnb.data.api.model.Token
 
 class LoginDataSource {
 
