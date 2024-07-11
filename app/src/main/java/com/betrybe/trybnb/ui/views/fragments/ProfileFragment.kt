@@ -49,15 +49,7 @@ class ProfileFragment : Fragment() {
 
     private fun isInputEmpty(input: TextInputLayout) {
         if (input.editText?.text?.isEmpty() == true) {
-            when (input.id) {
-                R.id.login_input_profile -> {
-                    input.error = getString(R.string.email_empty_warning)
-                }
-
-                R.id.password_input_profile -> {
-                    input.error = getString(R.string.password_empty_warning)
-                }
-            }
+            input.error = "O campo ${input.hint} é obrigatório"
         } else {
             input.error = null
         }
