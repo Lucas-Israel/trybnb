@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mBottomMenu.setOnItemReselectedListener {
-            when (it.itemId) {
+        mBottomMenu.setOnItemSelectedListener { item ->
+            when (item.itemId) {
 
                 R.id.reservation_menu_item -> {
                     supportFragmentManager.beginTransaction()
@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.main_fragment_container, profileFragment)
                         .commit()
                 }
-
             }
+            true
         }
     }
 }

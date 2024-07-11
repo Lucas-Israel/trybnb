@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
 
             if (!profileVM.failure.value) Snackbar.make(
                 binding.profileScrollView,
-                getString(R.string.login_feito_com_sucesso),
+                getString(R.string.login_success),
                 Snackbar.LENGTH_SHORT
             ).show()
 

@@ -1,16 +1,21 @@
 <resources>
     <string name="app_name">Trybnb</string>
-    <string name="reservas">Reservas</string>
-    <string name="criar_reservas">Criar Reservas</string>
-    <string name="perfil">Perfil</string>
+    <string name="reservations">Reservas</string>
+    <string name="create_reservations">Criar Reservas</string>
+    <string name="profile">Perfil</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email_empty_warning">O campo Login é obrigatório</string>
     <string name="password_empty_warning">O campo Password é obrigatório</string>
-    <string name="login_feito_com_sucesso">Login feito com sucesso!</string>
-    <string name="nome_do_hospede">Nome do Hóspede</string>
+    <string name="login_success">Login feito com sucesso!</string>
+    <string name="guest_name">Nome do Hóspede</string>
     <string name="checkin">Checkin</string>
-    <string name="simbolo_de_moeda">R$</string>
-    <string name="informacoes_adicionais">Informações Adicionais</string>
+    <string name="coin_symbol">R$</string>
+    <string name="additional_information">Informações Adicionais</string>
     <string name="checkout">Checkout</string>
+    <string name="guest_lastname">Sobrenome do Hóspede</string>
+    <string name="total_price">Preço total</string>
+    <string name="deposit_paid">Depósito Pago</string>
+    <string name="create_reservation">Criar reserva</string>
+    <string name="additional_needs">Necessidades adicionais</string>
 </resources>
