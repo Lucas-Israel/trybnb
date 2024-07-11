@@ -42,7 +42,6 @@ class ProfileFragment : Fragment() {
                 Snackbar.LENGTH_SHORT
             ).show()
 
-
         }
 
         return view

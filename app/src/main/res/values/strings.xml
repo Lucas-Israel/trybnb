@@ -14,8 +14,8 @@
     <string name="additional_information">Informações Adicionais</string>
     <string name="checkout">Checkout</string>
     <string name="guest_lastname">Sobrenome do Hóspede</string>
-    <string name="total_price">Preço total</string>
+    <string name="total_price">Preço Total</string>
     <string name="deposit_paid">Depósito Pago</string>
     <string name="create_reservation">Criar reserva</string>
-    <string name="additional_needs">Necessidades adicionais</string>
+    <string name="additional_needs">Necessidades Adicionais</string>
 </resources>
