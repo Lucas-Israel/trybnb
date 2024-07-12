@@ -2,6 +2,7 @@ package com.betrybe.trybnb.data.api
 
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
+import com.betrybe.trybnb.data.api.model.CreateBooking
 import com.betrybe.trybnb.data.api.model.LoginBody
 import com.betrybe.trybnb.data.api.model.Token
 import retrofit2.Response
@@ -22,4 +23,8 @@ interface ApiService {
     @GET("booking/{id}")
     @Headers("Accept: application/json")
     suspend fun getBookingById(@Path("id") id: String): Response<Book>
+
+    @POST("booking")
+    @Headers("Accept: application/json")
+    suspend fun createBooking(@Body body: Book): Response<CreateBooking>
 }

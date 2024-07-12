@@ -3,6 +3,7 @@ package com.betrybe.trybnb.data.repository
 import android.util.Log
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
+import com.betrybe.trybnb.data.api.model.CreateBooking
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.models.Response
 import com.betrybe.trybnb.data.network.BookingDataSource
@@ -23,8 +24,8 @@ class BookingRepository(private val bookingDS: BookingDataSource = BookingDataSo
                     val booking = Booking(
                         bookingById.firstname + " " + bookingById.lastname,
                         bookingById.totalprice.toString(),
-                        dateFormatter(bookingById.bookingdates.checkin),
-                        dateFormatter(bookingById.bookingdates.checkout),
+                        bookingById.bookingdates.checkin,
+                        bookingById.bookingdates.checkout,
                         bookingById.additionalneeds,
                         bookingById.depositpaid
                     )
@@ -37,10 +38,12 @@ class BookingRepository(private val bookingDS: BookingDataSource = BookingDataSo
         }
     }
 
-    private fun dateFormatter(date: Date): String {
-        val inputDateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy")
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        val result = inputDateFormat.parse(date.toString())
-        return outputFormat.format(result)
+    suspend fun createBooking(booking: Book): Response<CreateBooking> {
+        try {
+            val bookingResponse = bookingDS.createBooking(booking)
+            return Response(true, "", bookingResponse)
+        } catch (e: ConnectException) {
+            return Response(false, e.message.toString(), null)
+        }
     }
 }

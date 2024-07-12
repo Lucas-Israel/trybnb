@@ -4,6 +4,7 @@ import android.util.Log
 import com.betrybe.trybnb.data.api.ApiServiceClient
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
+import com.betrybe.trybnb.data.api.model.CreateBooking
 
 class BookingDataSource {
 
@@ -19,5 +20,11 @@ class BookingDataSource {
         val bookResult = service.getBookingById(id)
 
         return bookResult.body()
+    }
+
+    suspend fun createBooking(body: Book): CreateBooking? {
+        val createBookingResponse = service.createBooking(body)
+
+        return createBookingResponse.body()
     }
 }

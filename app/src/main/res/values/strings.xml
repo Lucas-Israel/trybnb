@@ -8,14 +8,15 @@
     <string name="email_empty_warning">O campo Login é obrigatório</string>
     <string name="password_empty_warning">O campo Password é obrigatório</string>
     <string name="login_success">Login feito com sucesso!</string>
-    <string name="guest_name">Nome do Hóspede</string>
+    <string name="guest_name">Nome do hóspede</string>
     <string name="checkin">Checkin</string>
     <string name="coin_symbol">R$</string>
     <string name="additional_information">Informações Adicionais</string>
     <string name="checkout">Checkout</string>
-    <string name="guest_lastname">Sobrenome do Hóspede</string>
-    <string name="total_price">Preço Total</string>
+    <string name="guest_lastname">Sobrenome do hóspede</string>
+    <string name="total_price">Preço total</string>
     <string name="deposit_paid">Depósito Pago</string>
     <string name="create_reservation">Criar reserva</string>
-    <string name="additional_needs">Necessidades Adicionais</string>
+    <string name="additional_needs">Necessidades adicionais</string>
+    <string name="reservation_success">Reserva feita com sucesso!</string>
 </resources>

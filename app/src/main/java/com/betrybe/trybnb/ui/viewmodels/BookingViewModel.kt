@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betrybe.trybnb.common.ApiIdlingResource
+import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.repository.BookingRepository
@@ -26,6 +27,10 @@ class BookingViewModel : ViewModel() {
     val fetchError: StateFlow<Boolean>
         get() = _fetchError
 
+    private val _isBookingCreationSuccess = MutableStateFlow(false)
+    val isBookingCreationSuccess: StateFlow<Boolean>
+        get() = _isBookingCreationSuccess
+
     fun getBookings() {
         CoroutineScope(Dispatchers.IO).launch {
             ApiIdlingResource.increment()
@@ -35,6 +40,16 @@ class BookingViewModel : ViewModel() {
             }
             if (!result.success) _fetchError.value = true
 
+            ApiIdlingResource.decrement()
+        }
+    }
+
+    fun createBooking(body: Book) {
+        CoroutineScope(Dispatchers.IO).launch {
+            ApiIdlingResource.increment()
+            val result = bookingRepository.createBooking(body)
+
+            if (result.success) _isBookingCreationSuccess.value = true
             ApiIdlingResource.decrement()
         }
     }
