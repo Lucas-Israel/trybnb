@@ -1,14 +1,11 @@
 package com.betrybe.trybnb.ui.views.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.betrybe.trybnb.R
@@ -16,8 +13,6 @@ import com.betrybe.trybnb.databinding.FragmentReservationBinding
 import com.betrybe.trybnb.ui.adapters.BookingAdapter
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.observeOn
 
 @AndroidEntryPoint
 class ReservationFragment: Fragment() {
@@ -45,8 +40,7 @@ class ReservationFragment: Fragment() {
         super.onStart()
         viewModel.getBookings()
         viewModel.bookings.observeForever {
-//            mRecyclerView.adapter = BookingAdapter(it)
-            mRecyclerView.adapter = BookingAdapter(viewModel, it)
+            mRecyclerView.adapter = BookingAdapter(it)
         }
     }
 
