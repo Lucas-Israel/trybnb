@@ -1,7 +1,6 @@
 package com.betrybe.trybnb.ui.views.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,13 +14,12 @@ import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class CreateReservationFragment : Fragment() {
     private lateinit var binding: FragmentCreateReservationBinding
     private val viewModel: BookingViewModel by viewModels()

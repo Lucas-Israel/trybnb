@@ -39,7 +39,7 @@ class ReservationFragment: Fragment() {
     override fun onStart() {
         super.onStart()
         viewModel.getBookings()
-        viewModel.bookings.observeForever {
+        viewModel.bookings.observe(this) {
             mRecyclerView.adapter = BookingAdapter(it)
         }
     }
