@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betrybe.trybnb.common.ApiIdlingResource
+import com.betrybe.trybnb.data.models.ClientResult
 import com.betrybe.trybnb.data.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -28,9 +29,9 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
         CoroutineScope(Dispatchers.IO).launch {
             ApiIdlingResource.increment()
             val login = loginRepository.login(email, password)
-            if (login.success) {
+            if (login is ClientResult.ClientSuccess) {
                 _loginFailure.value = false
-                _token.postValue(login.data?.token)
+                _token.postValue(login.data.token)
             } else {
                 _loginFailure.value = true
             }

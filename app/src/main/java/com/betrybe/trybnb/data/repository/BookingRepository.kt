@@ -3,14 +3,14 @@ package com.betrybe.trybnb.data.repository
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.CreateBooking
 import com.betrybe.trybnb.data.models.Booking
-import com.betrybe.trybnb.data.models.Response
+import com.betrybe.trybnb.data.models.ClientResult
 import com.betrybe.trybnb.data.network.BookingDataSource
 import java.net.ConnectException
 import javax.inject.Inject
 
 class BookingRepository @Inject constructor(private val bookingDS: BookingDataSource) {
 
-    suspend fun getBookings(): Response<List<Booking>> {
+    suspend fun getBookings(): ClientResult<List<Booking>> {
         val bookingsResponse = bookingDS.getBookings()?.take(5)
         val bookingList = mutableListOf<Booking>()
         try {
@@ -21,18 +21,18 @@ class BookingRepository @Inject constructor(private val bookingDS: BookingDataSo
                     bookingList.add(booking)
                 }
             }
-            return Response(true, "", bookingList)
+            return ClientResult.ClientSuccess(bookingList)
         } catch (e: ConnectException) {
-            return Response(false, e.message.toString(), null)
+            return ClientResult.ClientError(isServerError = false, isNetworkError = true )
         }
     }
 
-    suspend fun createBooking(booking: Book): Response<CreateBooking> {
+    suspend fun createBooking(booking: Book): ClientResult<CreateBooking> {
         try {
-            val bookingResponse = bookingDS.createBooking(booking)
-            return Response(true, "", bookingResponse)
+            val bookingResponse = bookingDS.createBooking(booking) ?: throw ConnectException()
+            return ClientResult.ClientSuccess(bookingResponse)
         } catch (e: ConnectException) {
-            return Response(false, e.message.toString(), null)
+            return ClientResult.ClientError(isServerError = false, isNetworkError = true)
         }
     }
 

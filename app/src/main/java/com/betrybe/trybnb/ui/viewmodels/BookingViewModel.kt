@@ -8,6 +8,7 @@ import com.betrybe.trybnb.common.ApiIdlingResource
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
 import com.betrybe.trybnb.data.models.Booking
+import com.betrybe.trybnb.data.models.ClientResult
 import com.betrybe.trybnb.data.repository.BookingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -37,10 +38,10 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
         CoroutineScope(Dispatchers.IO).launch {
             ApiIdlingResource.increment()
             val result = bookingRepository.getBookings()
-            if (result.success) {
-                _bookings.postValue(result.data!!)
+            if (result is ClientResult.ClientSuccess) {
+                _bookings.postValue(result.data)
             }
-            if (!result.success) _fetchError.value = true
+            if (result is ClientResult.ClientError) _fetchError.value = true
 
             ApiIdlingResource.decrement()
         }
@@ -51,7 +52,7 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
             ApiIdlingResource.increment()
             val result = bookingRepository.createBooking(body)
 
-            if (result.success) _isBookingCreationSuccess.value = true
+            if (result is ClientResult.ClientSuccess) _isBookingCreationSuccess.value = true
             ApiIdlingResource.decrement()
         }
     }
