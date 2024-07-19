@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.betrybe.trybnb.common.ApiIdlingResource
 import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
@@ -35,7 +36,7 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
         get() = _isBookingCreationSuccess
 
     fun getBookings() {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             ApiIdlingResource.increment()
             val result = bookingRepository.getBookings()
             if (result is ClientResult.ClientSuccess) {
@@ -48,7 +49,7 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
     }
 
     fun createBooking(body: Book) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             ApiIdlingResource.increment()
             val result = bookingRepository.createBooking(body)
 
