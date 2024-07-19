@@ -40,7 +40,7 @@ class ReservationFragment: Fragment() {
         super.onStart()
         viewModel.getBookings()
         viewModel.bookings.observe(this) {
-            mRecyclerView.adapter = BookingAdapter(it)
+            mRecyclerView.adapter = BookingAdapter(it.toList())
         }
     }
 
