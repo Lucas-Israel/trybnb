@@ -1,18 +1,14 @@
 package com.betrybe.trybnb.data.repository
 
-import android.util.Log
 import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.api.model.BookingId
 import com.betrybe.trybnb.data.api.model.CreateBooking
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.models.Response
 import com.betrybe.trybnb.data.network.BookingDataSource
 import java.net.ConnectException
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import javax.inject.Inject
 
-class BookingRepository(private val bookingDS: BookingDataSource = BookingDataSource()) {
+class BookingRepository @Inject constructor(private val bookingDS: BookingDataSource) {
 
     suspend fun getBookings(): Response<List<Booking>> {
         val bookingsResponse = bookingDS.getBookings()?.take(5)
@@ -21,14 +17,7 @@ class BookingRepository(private val bookingDS: BookingDataSource = BookingDataSo
             bookingsResponse?.forEach {
                 val bookingById = bookingDS.getBookingById(it.bookingid.toString())
                 if (bookingById != null) {
-                    val booking = Booking(
-                        bookingById.firstname + " " + bookingById.lastname,
-                        bookingById.totalprice.toString(),
-                        bookingById.bookingdates.checkin,
-                        bookingById.bookingdates.checkout,
-                        bookingById.additionalneeds,
-                        bookingById.depositpaid
-                    )
+                    val booking = bookingCreatorFromBook(bookingById)
                     bookingList.add(booking)
                 }
             }
@@ -45,5 +34,16 @@ class BookingRepository(private val bookingDS: BookingDataSource = BookingDataSo
         } catch (e: ConnectException) {
             return Response(false, e.message.toString(), null)
         }
+    }
+
+    private fun bookingCreatorFromBook(book: Book): Booking {
+        return Booking(
+            book.firstname + " " + book.lastname,
+            book.totalprice.toString(),
+            book.bookingdates.checkin,
+            book.bookingdates.checkout,
+            book.additionalneeds,
+            book.depositpaid
+        )
     }
 }

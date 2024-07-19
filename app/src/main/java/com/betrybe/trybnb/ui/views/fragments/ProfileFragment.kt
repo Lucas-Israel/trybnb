@@ -13,10 +13,12 @@ import com.betrybe.trybnb.databinding.FragmentProfileBinding
 import com.betrybe.trybnb.ui.viewmodels.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val profileVM: ProfileViewModel by viewModels()

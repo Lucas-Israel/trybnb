@@ -9,15 +9,17 @@ import com.betrybe.trybnb.data.api.model.Book
 import com.betrybe.trybnb.data.api.model.BookingId
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.repository.BookingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.Date
+import javax.inject.Inject
 
-class BookingViewModel : ViewModel() {
-    private val bookingRepository = BookingRepository()
+@HiltViewModel
+class BookingViewModel @Inject constructor(private val bookingRepository: BookingRepository) : ViewModel() {
 
     private val _bookings = MutableLiveData<List<Booking>>()
     val bookings: MutableLiveData<List<Booking>>

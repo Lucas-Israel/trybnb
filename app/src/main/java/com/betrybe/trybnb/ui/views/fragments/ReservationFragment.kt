@@ -15,10 +15,11 @@ import com.betrybe.trybnb.R
 import com.betrybe.trybnb.databinding.FragmentReservationBinding
 import com.betrybe.trybnb.ui.adapters.BookingAdapter
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.observeOn
 
-
+@AndroidEntryPoint
 class ReservationFragment: Fragment() {
     private lateinit var binding: FragmentReservationBinding
     private val viewModel: BookingViewModel by viewModels()

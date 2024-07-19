@@ -1,6 +1,6 @@
 package com.betrybe.trybnb.data.models
 
-class Booking(
+data class Booking(
     val fullName: String,
     val price: String,
     val checkin: String,

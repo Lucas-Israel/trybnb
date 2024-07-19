@@ -8,7 +8,9 @@ import com.betrybe.trybnb.ui.views.fragments.CreateReservationFragment
 import com.betrybe.trybnb.ui.views.fragments.ProfileFragment
 import com.betrybe.trybnb.ui.views.fragments.ReservationFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mBottomMenu: BottomNavigationView by lazy { findViewById(R.id.navigation_bottom_view) }

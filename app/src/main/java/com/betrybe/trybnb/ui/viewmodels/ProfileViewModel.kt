@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betrybe.trybnb.common.ApiIdlingResource
 import com.betrybe.trybnb.data.repository.LoginRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProfileViewModel : ViewModel() {
-    private val loginRepository = LoginRepository()
+@HiltViewModel
+class ProfileViewModel @Inject constructor(private val loginRepository: LoginRepository) : ViewModel() {
 
     private var _token = MutableLiveData("")
     val token: MutableLiveData<String>
