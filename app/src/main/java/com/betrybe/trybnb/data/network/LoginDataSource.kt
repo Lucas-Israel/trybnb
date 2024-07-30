@@ -2,7 +2,7 @@ package com.betrybe.trybnb.data.network
 
 import com.betrybe.trybnb.data.api.ApiService
 import com.betrybe.trybnb.model.LoginBody
-import com.betrybe.trybnb.model.Token
+import com.betrybe.trybnb.data.response.Token
 import javax.inject.Inject
 
 class LoginDataSource @Inject constructor(private val service: ApiService) {

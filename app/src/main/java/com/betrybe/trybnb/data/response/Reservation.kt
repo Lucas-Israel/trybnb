@@ -1,4 +1,6 @@
-package com.betrybe.trybnb.model
+package com.betrybe.trybnb.data.response
+
+import com.betrybe.trybnb.model.BookingDates
 
 data class Reservation(
     val firstname: String,

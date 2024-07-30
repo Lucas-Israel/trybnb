@@ -1,13 +1,13 @@
 package com.betrybe.trybnb.data.repository
 
-import com.betrybe.trybnb.model.CreateBooking
+import com.betrybe.trybnb.data.response.CreateBooking
 import com.betrybe.trybnb.data.config.Configs.QUANTITY_OF_BOOKINGS_AT_A_TIME
 import com.betrybe.trybnb.model.Booking
-import com.betrybe.trybnb.data.response.ClientResult
+import com.betrybe.trybnb.data.utils.ClientResult
 import com.betrybe.trybnb.data.network.BookingDataSource
 import com.betrybe.trybnb.data.repository.utils.BookingCreatorHelper
 import com.betrybe.trybnb.data.repository.utils.DispatcherProvider
-import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.data.response.Reservation
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

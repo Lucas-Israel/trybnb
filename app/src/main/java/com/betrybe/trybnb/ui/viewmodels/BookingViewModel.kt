@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betrybe.trybnb.model.Booking
-import com.betrybe.trybnb.data.response.ClientResult
+import com.betrybe.trybnb.data.utils.ClientResult
 import com.betrybe.trybnb.data.repository.BookingRepository
-import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.data.response.Reservation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,7 +1,7 @@
 package com.betrybe.trybnb.data.repository
 
-import com.betrybe.trybnb.data.response.ClientResult
-import com.betrybe.trybnb.model.Token
+import com.betrybe.trybnb.data.utils.ClientResult
+import com.betrybe.trybnb.data.response.Token
 import com.betrybe.trybnb.data.network.LoginDataSource
 import com.betrybe.trybnb.data.repository.utils.DispatcherProvider
 import kotlinx.coroutines.withContext

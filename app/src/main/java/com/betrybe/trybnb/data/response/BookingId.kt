@@ -1,3 +1,3 @@
-package com.betrybe.trybnb.model
+package com.betrybe.trybnb.data.response
 
 data class BookingId(val bookingid: Int)

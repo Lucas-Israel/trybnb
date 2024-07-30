@@ -1,11 +1,11 @@
 package com.betrybe.trybnb.data.api
 
 
-import com.betrybe.trybnb.model.BookingId
-import com.betrybe.trybnb.model.CreateBooking
+import com.betrybe.trybnb.data.response.BookingId
+import com.betrybe.trybnb.data.response.CreateBooking
 import com.betrybe.trybnb.model.LoginBody
-import com.betrybe.trybnb.model.Reservation
-import com.betrybe.trybnb.model.Token
+import com.betrybe.trybnb.data.response.Reservation
+import com.betrybe.trybnb.data.response.Token
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

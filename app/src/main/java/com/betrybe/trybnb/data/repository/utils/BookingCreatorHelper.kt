@@ -1,7 +1,7 @@
 package com.betrybe.trybnb.data.repository.utils
 
 import com.betrybe.trybnb.model.Booking
-import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.data.response.Reservation
 
 class BookingCreatorHelper {
 

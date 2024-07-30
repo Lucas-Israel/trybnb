@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.model.BookingDates
 import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
-import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.data.response.Reservation
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout

@@ -1,9 +1,9 @@
 package com.betrybe.trybnb.data.network
 
 import com.betrybe.trybnb.data.api.ApiService
-import com.betrybe.trybnb.model.BookingId
-import com.betrybe.trybnb.model.CreateBooking
-import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.data.response.BookingId
+import com.betrybe.trybnb.data.response.CreateBooking
+import com.betrybe.trybnb.data.response.Reservation
 import javax.inject.Inject
 
 class BookingDataSource @Inject constructor(private val apiService: ApiService) {
