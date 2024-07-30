@@ -27,6 +27,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            buildConfigField("String", "BASE_URL", BASEURL)
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -49,6 +53,9 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    buildFeatures {
+        buildConfig true
     }
 }
 

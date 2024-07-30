@@ -1,7 +1,7 @@
 package com.betrybe.trybnb.di
 
+import com.betrybe.trybnb.BuildConfig.BASE_URL
 import com.betrybe.trybnb.data.api.ApiService
-import com.betrybe.trybnb.data.config.Configs.BASE_URL
 import com.betrybe.trybnb.data.network.BookingDataSource
 import com.betrybe.trybnb.data.network.LoginDataSource
 import com.betrybe.trybnb.data.repository.BookingRepository
