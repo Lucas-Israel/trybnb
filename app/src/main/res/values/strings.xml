@@ -19,4 +19,9 @@
     <string name="create_reservation">Criar reserva</string>
     <string name="additional_needs">Necessidades adicionais</string>
     <string name="reservation_success">Reserva feita com sucesso!</string>
+    <string name="guest_name_data">guest_name_data</string>
+    <string name="checkIn_data">checkIn_data</string>
+    <string name="checkout_data">checkOut_data</string>
+    <string name="additional_needs_data">additional_needs_data</string>
+    <string name="total_price_data">total_price_data</string>
 </resources>
