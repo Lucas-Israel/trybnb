@@ -11,8 +11,6 @@ import com.betrybe.trybnb.databinding.ListItemReservationBinding
 class BookingAdapter(private val bookings: List<Booking>) :
     Adapter<BookingAdapter.BookingViewHolder>() {
 
-    private lateinit var binding: ListItemReservationBinding
-
     class BookingViewHolder(private val binding: ListItemReservationBinding) :
         ViewHolder(binding.root) {
         fun bind(bookings: Booking) {
@@ -29,14 +27,9 @@ class BookingAdapter(private val bookings: List<Booking>) :
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
-    ): BookingViewHolder {
-        binding =
-            ListItemReservationBinding
-                .inflate(LayoutInflater.from(parent.context), parent, false)
-        return BookingViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
+        val bind = ListItemReservationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BookingViewHolder(bind)
     }
 
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
