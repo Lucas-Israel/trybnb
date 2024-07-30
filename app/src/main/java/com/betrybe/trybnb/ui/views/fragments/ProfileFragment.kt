@@ -28,14 +28,16 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         binding = FragmentProfileBinding.bind(view)
 
-        val loginInput = binding.loginInputProfile
-        val passInput = binding.passwordInputProfile
-        val email = loginInput.editText?.text.toString()
-        val password = passInput.editText?.text.toString()
-
         binding.loginButtonProfile.setOnClickListener {
-            isInputEmpty(loginInput)
-            isInputEmpty(passInput)
+            val emailInput = binding.loginInputProfile
+            val passInput = binding.passwordInputProfile
+            val email = emailInput.editText?.text.toString()
+            val password = passInput.editText?.text.toString()
+
+            validatingInput(emailInput)
+            validatingInput(passInput)
+
+            if (email.isEmpty() || password.isEmpty()) return@setOnClickListener
 
             profileVM.login(email, password)
 
@@ -48,14 +50,19 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    private fun isInputEmpty(input: TextInputLayout): Boolean {
-        if (input.editText?.text?.isEmpty() == true) {
-            input.error = "O campo ${input.hint} é obrigatório"
-            return true
-        } else {
-            input.error = null
-            return false
+    private fun validatingInput(input: TextInputLayout) {
+        when (input.editText?.text.toString().isBlank()) {
+            true -> setInputError(input)
+            false -> clearInputError(input)
         }
+    }
+
+    private fun setInputError(input: TextInputLayout) {
+        input.error = "O campo ${input.hint} é obrigatório"
+    }
+
+    private fun clearInputError(input: TextInputLayout) {
+        input.error = null
     }
 
     private fun successLoginMessage() {
