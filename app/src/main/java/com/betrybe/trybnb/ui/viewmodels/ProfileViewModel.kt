@@ -18,7 +18,7 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
         get() = _token
 
     private var _loginFailure = MutableStateFlow(true)
-    val failure: MutableStateFlow<Boolean>
+    val loginFailure: MutableStateFlow<Boolean>
         get() = _loginFailure
 
     fun login(email: String, password: String) {

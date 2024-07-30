@@ -1,5 +1,6 @@
 package com.betrybe.trybnb.ui.views.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.betrybe.trybnb.R
+import com.betrybe.trybnb.UiText
 import com.betrybe.trybnb.databinding.FragmentProfileBinding
 import com.betrybe.trybnb.ui.viewmodels.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -33,16 +35,19 @@ class ProfileFragment : Fragment() {
             val passInput = binding.passwordInputProfile
             val email = emailInput.editText?.text.toString()
             val password = passInput.editText?.text.toString()
+            val context = container?.context
 
-            validatingInput(emailInput)
-            validatingInput(passInput)
+            if (context != null) {
+                validatingInput(context, emailInput)
+                validatingInput(context, passInput)
+            }
 
             if (email.isEmpty() || password.isEmpty()) return@setOnClickListener
 
             profileVM.login(email, password)
 
             viewLifecycleOwner.lifecycleScope.launch {
-                profileVM.failure.collect { error ->
+                profileVM.loginFailure.collect { error ->
                     if (!error) successLoginMessage()
                 }
             }
@@ -50,15 +55,18 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    private fun validatingInput(input: TextInputLayout) {
+    private fun validatingInput(context: Context, input: TextInputLayout) {
         when (input.editText?.text.toString().isBlank()) {
-            true -> setInputError(input)
+            true -> setInputError(context, input)
             false -> clearInputError(input)
         }
     }
 
-    private fun setInputError(input: TextInputLayout) {
-        input.error = "O campo ${input.hint} é obrigatório"
+    private fun setInputError(context: Context,input: TextInputLayout) {
+        input.error = UiText.StringResource(
+            R.string.required_field,
+            input.hint.toString()
+        ).asString(context)
     }
 
     private fun clearInputError(input: TextInputLayout) {

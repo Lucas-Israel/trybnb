@@ -24,4 +24,5 @@
     <string name="checkout_data">checkOut_data</string>
     <string name="additional_needs_data">additional_needs_data</string>
     <string name="total_price_data">total_price_data</string>
+    <string name="required_field">O campo %s é obrigatório</string>
 </resources>
