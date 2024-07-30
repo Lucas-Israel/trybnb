@@ -29,12 +29,12 @@ class ProfileFragment : Fragment() {
 
 
         binding.loginButtonProfile.setOnClickListener {
+            val loginInput = binding.loginInputProfile
+            val passInput = binding.passwordInputProfile
+
+            profileVM.login(loginInput, passInput)
+
             viewLifecycleOwner.lifecycleScope.launch {
-                val loginInput = binding.loginInputProfile
-                val passInput = binding.passwordInputProfile
-
-                profileVM.login(loginInput, passInput)
-
                 profileVM.failure.collect { error ->
                     if (!error) successLoginMessage()
                 }

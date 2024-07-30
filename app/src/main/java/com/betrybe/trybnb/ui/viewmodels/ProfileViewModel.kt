@@ -32,13 +32,14 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
 
         viewModelScope.launch {
             ApiIdlingResource.increment()
-            val login = loginRepository.login(email, password)
-            if (login is ClientResult.ClientSuccess) {
-                _loginFailure.value = false
-                _token.postValue(login.data?.token)
-            }
-            if (login is ClientResult.ClientError) {
-                _loginFailure.value = true
+            when (val login = loginRepository.login(email, password)) {
+                is ClientResult.ClientSuccess -> {
+                    _loginFailure.value = false
+                    _token.postValue(login.data?.token)
+                }
+                is ClientResult.ClientError -> {
+                    _loginFailure.value = true
+                }
             }
             ApiIdlingResource.decrement()
         }
@@ -46,6 +47,7 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
 
     private fun isInputEmpty(input: TextInputLayout) {
         if (input.editText?.text?.isEmpty() == true) {
+            _loginFailure.value = true
             input.error = "O campo ${input.hint} é obrigatório"
         } else {
             input.error = null
