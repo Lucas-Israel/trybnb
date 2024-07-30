@@ -3,7 +3,7 @@ package com.betrybe.trybnb.data.repository
 import com.betrybe.trybnb.data.utils.ClientResult
 import com.betrybe.trybnb.data.response.Token
 import com.betrybe.trybnb.data.network.LoginDataSource
-import com.betrybe.trybnb.data.repository.utils.DispatcherProvider
+import com.betrybe.trybnb.data.utils.DispatcherProvider
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
