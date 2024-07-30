@@ -1,11 +1,11 @@
 package com.betrybe.trybnb.data.repository.utils
 
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.models.Booking
+import com.betrybe.trybnb.model.Booking
+import com.betrybe.trybnb.model.Reservation
 
 class BookingCreatorHelper {
 
-    fun bookingCreatorFromBook(book: Book): Booking {
+    fun bookingCreatorFromBook(book: Reservation): Booking {
         return Booking(
             book.firstname + " " + book.lastname,
             book.totalprice.toString(),

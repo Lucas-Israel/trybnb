@@ -1,4 +1,4 @@
-package com.betrybe.trybnb.data.models
+package com.betrybe.trybnb.data.response
 
 sealed class ClientResult<out T> {
 

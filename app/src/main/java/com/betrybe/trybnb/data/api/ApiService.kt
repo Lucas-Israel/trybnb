@@ -1,10 +1,11 @@
 package com.betrybe.trybnb.data.api
 
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.api.model.BookingId
-import com.betrybe.trybnb.data.api.model.CreateBooking
-import com.betrybe.trybnb.data.api.model.LoginBody
-import com.betrybe.trybnb.data.api.model.Token
+
+import com.betrybe.trybnb.model.BookingId
+import com.betrybe.trybnb.model.CreateBooking
+import com.betrybe.trybnb.model.LoginBody
+import com.betrybe.trybnb.model.Reservation
+import com.betrybe.trybnb.model.Token
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,9 +23,9 @@ interface ApiService {
 
     @GET("booking/{id}")
     @Headers("Accept: application/json")
-    suspend fun getBookingById(@Path("id") id: String): Response<Book>
+    suspend fun getBookingById(@Path("id") id: String): Response<Reservation>
 
     @POST("booking")
     @Headers("Accept: application/json")
-    suspend fun createBooking(@Body body: Book): Response<CreateBooking>
+    suspend fun createBooking(@Body body: Reservation): Response<CreateBooking>
 }

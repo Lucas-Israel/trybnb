@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.betrybe.trybnb.R
-import com.betrybe.trybnb.data.models.Booking
+import com.betrybe.trybnb.model.Booking
 import com.betrybe.trybnb.databinding.ListItemReservationBinding
 
 class BookingAdapter(private val bookings: List<Booking>) :

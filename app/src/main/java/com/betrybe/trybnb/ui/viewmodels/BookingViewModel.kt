@@ -3,10 +3,10 @@ package com.betrybe.trybnb.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.models.Booking
-import com.betrybe.trybnb.data.models.ClientResult
+import com.betrybe.trybnb.model.Booking
+import com.betrybe.trybnb.data.response.ClientResult
 import com.betrybe.trybnb.data.repository.BookingRepository
+import com.betrybe.trybnb.model.Reservation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -44,7 +44,7 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
         }
     }
 
-    fun createBooking(body: Book) {
+    fun createBooking(body: Reservation) {
         viewModelScope.launch {
             when (bookingRepository.createBooking(body)) {
                 is ClientResult.ClientSuccess -> _isBookingCreationSuccess.value = true

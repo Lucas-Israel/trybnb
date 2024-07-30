@@ -1,10 +1,9 @@
 package com.betrybe.trybnb.data.network
 
-import android.util.Log
 import com.betrybe.trybnb.data.api.ApiService
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.api.model.BookingId
-import com.betrybe.trybnb.data.api.model.CreateBooking
+import com.betrybe.trybnb.model.BookingId
+import com.betrybe.trybnb.model.CreateBooking
+import com.betrybe.trybnb.model.Reservation
 import javax.inject.Inject
 
 class BookingDataSource @Inject constructor(private val apiService: ApiService) {
@@ -16,13 +15,13 @@ class BookingDataSource @Inject constructor(private val apiService: ApiService) 
         return bookingsResponse.body()
     }
 
-    suspend fun getBookingById(id: String): Book? {
+    suspend fun getBookingById(id: String): Reservation? {
         val bookResult = apiService.getBookingById(id)
 
         return bookResult.body()
     }
 
-    suspend fun createBooking(body: Book): CreateBooking? {
+    suspend fun createBooking(body: Reservation): CreateBooking? {
         val createBookingResponse = apiService.createBooking(body)
 
         return createBookingResponse.body()

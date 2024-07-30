@@ -1,6 +1,6 @@
-package com.betrybe.trybnb.data.api.model
+package com.betrybe.trybnb.model
 
-data class Book(
+data class Reservation(
     val firstname: String,
     val lastname: String,
     val totalprice: Int,

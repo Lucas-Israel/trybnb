@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.betrybe.trybnb.R
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.api.model.BookingDates
+import com.betrybe.trybnb.model.BookingDates
 import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
+import com.betrybe.trybnb.model.Reservation
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
@@ -56,7 +56,7 @@ class CreateReservationFragment : Fragment() {
                 if (checkin != null && checkout != null) {
                     bookingDates = BookingDates(checkin, checkout)
 
-                    val body = Book(
+                    val body = Reservation(
                         firstname = binding.firstNameCreateReservation.editText?.text.toString(),
                         lastname = binding.lastNameCreateReservation.editText?.text.toString(),
                         totalprice = binding.totalPriceCreateReservation.editText?.text.toString()

@@ -1,4 +1,4 @@
-package com.betrybe.trybnb.data.models
+package com.betrybe.trybnb.model
 
 data class Booking(
     val fullName: String,

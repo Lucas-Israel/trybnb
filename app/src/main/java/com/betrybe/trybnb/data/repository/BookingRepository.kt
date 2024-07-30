@@ -1,13 +1,13 @@
 package com.betrybe.trybnb.data.repository
 
-import com.betrybe.trybnb.data.api.model.Book
-import com.betrybe.trybnb.data.api.model.CreateBooking
+import com.betrybe.trybnb.model.CreateBooking
 import com.betrybe.trybnb.data.config.Configs.QUANTITY_OF_BOOKINGS_AT_A_TIME
-import com.betrybe.trybnb.data.models.Booking
-import com.betrybe.trybnb.data.models.ClientResult
+import com.betrybe.trybnb.model.Booking
+import com.betrybe.trybnb.data.response.ClientResult
 import com.betrybe.trybnb.data.network.BookingDataSource
 import com.betrybe.trybnb.data.repository.utils.BookingCreatorHelper
 import com.betrybe.trybnb.data.repository.utils.DispatcherProvider
+import com.betrybe.trybnb.model.Reservation
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -36,7 +36,7 @@ class BookingRepository @Inject constructor(private val bookingDS: BookingDataSo
         }
     }
 
-    suspend fun createBooking(booking: Book): ClientResult<CreateBooking> {
+    suspend fun createBooking(booking: Reservation): ClientResult<CreateBooking> {
         return withContext(DispatcherProvider.IO) {
             val bookingResponse = bookingDS.createBooking(booking)
                 ?: return@withContext ClientResult.ClientError(
