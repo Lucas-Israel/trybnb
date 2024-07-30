@@ -31,8 +31,15 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
     fun getBookings() {
         viewModelScope.launch {
             when (val result = bookingRepository.getBookings()) {
-                is ClientResult.ClientSuccess -> _bookings.postValue(result.data)
-                is ClientResult.ClientError -> _fetchError.value = true
+                is ClientResult.ClientSuccess -> {
+                    _bookings.postValue(result.data)
+                    _fetchError.value = false
+                }
+                is ClientResult.ClientError -> {
+                    // Handle error
+                    _fetchError.value = true
+                }
+                // is ClientResult.ClientAnotherError -> handle as necessary
             }
         }
     }
@@ -41,7 +48,11 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
         viewModelScope.launch {
             when (bookingRepository.createBooking(body)) {
                 is ClientResult.ClientSuccess -> _isBookingCreationSuccess.value = true
-                is ClientResult.ClientError -> _isBookingCreationSuccess.value = false
+                is ClientResult.ClientError -> {
+                    // Handle error
+                    _isBookingCreationSuccess.value = false
+                }
+                // is ClientResult.ClientAnotherError -> handle as necessary
             }
         }
     }
