@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.betrybe.trybnb.R
@@ -13,6 +14,7 @@ import com.betrybe.trybnb.databinding.FragmentReservationBinding
 import com.betrybe.trybnb.ui.adapters.BookingAdapter
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ReservationFragment: Fragment() {
@@ -39,8 +41,10 @@ class ReservationFragment: Fragment() {
     override fun onStart() {
         super.onStart()
         viewModel.getBookings()
-        viewModel.bookings.observe(this) {
-            mRecyclerView.adapter = BookingAdapter(it.toList())
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.bookings.collect {
+                mRecyclerView.adapter = BookingAdapter(it.toList())
+            }
         }
     }
 
