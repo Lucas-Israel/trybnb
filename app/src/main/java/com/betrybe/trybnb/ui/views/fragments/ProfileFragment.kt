@@ -35,11 +35,13 @@ class ProfileFragment : Fragment() {
             val passInput = binding.passwordInputProfile
             val email = emailInput.editText?.text.toString()
             val password = passInput.editText?.text.toString()
-            val context = container?.context
 
             if (context != null) {
-                val emailEmptyWarning = UiText.StringResource(R.string.email_empty_warning).asString(context)
-                val passwordEmptyWarning = UiText.StringResource(R.string.password_empty_warning).asString(context)
+                val emailEmptyWarning =
+                    UiText.StringResource(R.string.email_empty_warning).asString(requireContext())
+
+                val passwordEmptyWarning = UiText.StringResource(R.string.password_empty_warning)
+                    .asString(requireContext())
 
                 validateEmptyInput(emailInput, emailEmptyWarning)
                 validateEmptyInput(passInput, passwordEmptyWarning)
