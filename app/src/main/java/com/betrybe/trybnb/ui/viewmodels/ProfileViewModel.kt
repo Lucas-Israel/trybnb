@@ -3,7 +3,7 @@ package com.betrybe.trybnb.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.betrybe.trybnb.data.utils.ClientResult
+import com.betrybe.trybnb.common.utils.ClientResult
 import com.betrybe.trybnb.data.repository.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +27,7 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
             when (val login = loginRepository.login(email, password)) {
                 is ClientResult.ClientSuccess -> {
                     _loginFailure.value = false
-                    _token.postValue(login.data?.token)
+                    _token.postValue(login.data.token)
                 }
                 is ClientResult.ClientError -> {
                     _loginFailure.value = true

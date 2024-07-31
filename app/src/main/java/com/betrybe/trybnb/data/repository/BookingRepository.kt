@@ -3,11 +3,11 @@ package com.betrybe.trybnb.data.repository
 import com.betrybe.trybnb.data.response.CreateBooking
 import com.betrybe.trybnb.data.config.Configs.QUANTITY_OF_BOOKINGS_AT_A_TIME
 import com.betrybe.trybnb.model.Booking
-import com.betrybe.trybnb.data.utils.ClientResult
+import com.betrybe.trybnb.common.utils.ClientResult
 import com.betrybe.trybnb.data.network.BookingDataSource
-import com.betrybe.trybnb.data.utils.BookingCreatorHelper
+import com.betrybe.trybnb.common.utils.BookingCreatorHelper
 import com.betrybe.trybnb.data.response.Reservation
-import com.betrybe.trybnb.data.utils.safeApiCall
+import com.betrybe.trybnb.common.utils.safeApiCall
 import javax.inject.Inject
 
 class BookingRepository @Inject constructor(private val bookingDS: BookingDataSource) {
@@ -16,7 +16,7 @@ class BookingRepository @Inject constructor(private val bookingDS: BookingDataSo
         return safeApiCall {
             bookingDS.getBookings().take(QUANTITY_OF_BOOKINGS_AT_A_TIME).map {
                 val bookingById = bookingDS.getBookingById(it.bookingid.toString())
-                BookingCreatorHelper().bookingCreatorFromReservation(bookingById)
+                BookingCreatorHelper.bookingCreatorFromReservation(bookingById)
             }
         }
     }
