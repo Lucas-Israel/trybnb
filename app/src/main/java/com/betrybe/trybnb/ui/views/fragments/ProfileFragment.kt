@@ -1,6 +1,6 @@
 package com.betrybe.trybnb.ui.views.fragments
 
-import android.content.Context
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,16 +10,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.UiText
+import com.betrybe.trybnb.common.utils.TextInputLayoutUtils.validateEmptyInput
 import com.betrybe.trybnb.databinding.FragmentProfileBinding
 import com.betrybe.trybnb.ui.viewmodels.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
-    private lateinit var binding: FragmentProfileBinding
+
     private val profileVM: ProfileViewModel by viewModels()
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        binding = FragmentProfileBinding.bind(view)
+        val binding = FragmentProfileBinding.bind(view)
 
         binding.loginButtonProfile.setOnClickListener {
             val emailInput = binding.loginInputProfile
@@ -38,8 +38,11 @@ class ProfileFragment : Fragment() {
             val context = container?.context
 
             if (context != null) {
-                validatingInput(context, emailInput)
-                validatingInput(context, passInput)
+                val emailEmptyWarning = UiText.StringResource(R.string.email_empty_warning).asString(context)
+                val passwordEmptyWarning = UiText.StringResource(R.string.password_empty_warning).asString(context)
+
+                validateEmptyInput(emailInput, emailEmptyWarning)
+                validateEmptyInput(passInput, passwordEmptyWarning)
             }
 
             if (email.isEmpty() || password.isEmpty()) return@setOnClickListener
@@ -48,32 +51,14 @@ class ProfileFragment : Fragment() {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 profileVM.loginFailure.collect { error ->
-                    if (!error) successLoginMessage()
+                    if (!error) successLoginMessage(binding)
                 }
             }
         }
         return view
     }
 
-    private fun validatingInput(context: Context, input: TextInputLayout) {
-        when (input.editText?.text.toString().isBlank()) {
-            true -> setInputError(context, input)
-            false -> clearInputError(input)
-        }
-    }
-
-    private fun setInputError(context: Context,input: TextInputLayout) {
-        input.error = UiText.StringResource(
-            R.string.required_field,
-            input.hint.toString()
-        ).asString(context)
-    }
-
-    private fun clearInputError(input: TextInputLayout) {
-        input.error = null
-    }
-
-    private fun successLoginMessage() {
+    private fun successLoginMessage(binding: FragmentProfileBinding) {
         Snackbar.make(
             binding.profileScrollView,
             getString(R.string.login_success),
