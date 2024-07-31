@@ -5,14 +5,14 @@ import com.betrybe.trybnb.data.response.Reservation
 
 class BookingCreatorHelper {
 
-    fun bookingCreatorFromBook(book: Reservation): Booking {
+    fun bookingCreatorFromReservation(reservation: Reservation): Booking {
         return Booking(
-            book.firstname + " " + book.lastname,
-            book.totalprice.toString(),
-            book.bookingdates.checkin,
-            book.bookingdates.checkout,
-            book.additionalneeds,
-            book.depositpaid
+            reservation.firstname + " " + reservation.lastname,
+            reservation.totalprice.toString(),
+            reservation.bookingdates.checkin,
+            reservation.bookingdates.checkout,
+            reservation.additionalneeds,
+            reservation.depositpaid
         )
     }
 }
