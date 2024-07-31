@@ -9,21 +9,21 @@ import javax.inject.Inject
 class BookingDataSource @Inject constructor(private val apiService: ApiService) {
 
 
-    suspend fun getBookings(): List<BookingId>? {
+    suspend fun getBookings(): List<BookingId> {
         val bookingsResponse = apiService.getBookings()
 
-        return bookingsResponse.body()
+        return bookingsResponse
     }
 
-    suspend fun getBookingById(id: String): Reservation? {
+    suspend fun getBookingById(id: String): Reservation {
         val bookResult = apiService.getBookingById(id)
 
-        return bookResult.body()
+        return bookResult
     }
 
-    suspend fun createBooking(body: Reservation): CreateBooking? {
+    suspend fun createBooking(body: Reservation): CreateBooking {
         val createBookingResponse = apiService.createBooking(body)
 
-        return createBookingResponse.body()
+        return createBookingResponse
     }
 }
