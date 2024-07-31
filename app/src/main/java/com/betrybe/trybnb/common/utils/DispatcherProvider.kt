@@ -1,4 +1,4 @@
-package com.betrybe.trybnb.data.utils
+package com.betrybe.trybnb.common.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
