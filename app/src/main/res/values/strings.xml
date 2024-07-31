@@ -25,5 +25,5 @@
     <string name="additional_needs_data">additional_needs_data</string>
     <string name="total_price_data">total_price_data</string>
     <string name="empty_input_warning">O campo %s é obrigatório</string>
-    <string name="date_format_warning">%s não esta em uma data válida, usar mm/dd/yyyy</string>
+    <string name="date_format_warning">%s não esta em uma data válida, usar dd/mm/yyyy</string>
 </resources>
