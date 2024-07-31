@@ -1,6 +1,5 @@
 package com.betrybe.trybnb.ui.viewmodels
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betrybe.trybnb.model.Booking
@@ -16,8 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class BookingViewModel @Inject constructor(private val bookingRepository: BookingRepository) : ViewModel() {
 
-    private val _bookings = MutableLiveData<List<Booking>>()
-    val bookings: MutableLiveData<List<Booking>>
+    private val _bookings = MutableStateFlow<List<Booking>>(listOf())
+    val bookings: MutableStateFlow<List<Booking>>
         get() = _bookings
 
     private val _fetchError = MutableStateFlow(false)
@@ -32,7 +31,7 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
         viewModelScope.launch {
             when (val result = bookingRepository.getBookings()) {
                 is ClientResult.ClientSuccess -> {
-                    _bookings.postValue(result.data)
+                    _bookings.value = result.data
                     _fetchError.value = false
                 }
                 is ClientResult.ClientError -> {

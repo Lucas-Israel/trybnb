@@ -1,6 +1,5 @@
 package com.betrybe.trybnb.ui.viewmodels
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betrybe.trybnb.common.utils.ClientResult
@@ -13,8 +12,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private var _token = MutableLiveData("")
-    val token: MutableLiveData<String>
+    private var _token = MutableStateFlow("")
+    val token: MutableStateFlow<String>
         get() = _token
 
     private var _loginFailure = MutableStateFlow(true)
@@ -27,7 +26,7 @@ class ProfileViewModel @Inject constructor(private val loginRepository: LoginRep
             when (val login = loginRepository.login(email, password)) {
                 is ClientResult.ClientSuccess -> {
                     _loginFailure.value = false
-                    _token.postValue(login.data.token)
+                    _token.value = login.data.token
                 }
                 is ClientResult.ClientError -> {
                     _loginFailure.value = true
