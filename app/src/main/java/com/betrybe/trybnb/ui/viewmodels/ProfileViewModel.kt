@@ -12,25 +12,18 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private var _token = MutableStateFlow("")
-    val token: MutableStateFlow<String>
-        get() = _token
-
-    private var _loginFailure = MutableStateFlow(true)
-    val loginFailure: MutableStateFlow<Boolean>
-        get() = _loginFailure
+    private var _token = MutableStateFlow<String?>(null)
+    val token: MutableStateFlow<String?> get() = _token
 
     fun login(email: String, password: String) {
 
         viewModelScope.launch {
             when (val login = loginRepository.login(email, password)) {
                 is ClientResult.ClientSuccess -> {
-                    _loginFailure.value = false
                     _token.value = login.data.token
                 }
-                is ClientResult.ClientError -> {
-                    _loginFailure.value = true
-                }
+
+                is ClientResult.ClientError -> _token.value = null
             }
         }
     }
