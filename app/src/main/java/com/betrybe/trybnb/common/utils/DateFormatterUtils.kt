@@ -3,7 +3,7 @@ package com.betrybe.trybnb.common.utils
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class DateFormatterUtils {
+object DateFormatterUtils {
 
     fun reformatDate(inputDate: String): String? {
         val inputFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
