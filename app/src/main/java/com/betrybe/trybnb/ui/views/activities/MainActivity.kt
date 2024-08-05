@@ -2,7 +2,6 @@ package com.betrybe.trybnb.ui.views.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.ui.views.fragments.CreateReservationFragment
 import com.betrybe.trybnb.ui.views.fragments.ProfileFragment
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private val createReservationFragment = CreateReservationFragment()
     private val profileFragment = ProfileFragment()
 
-    // init
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
