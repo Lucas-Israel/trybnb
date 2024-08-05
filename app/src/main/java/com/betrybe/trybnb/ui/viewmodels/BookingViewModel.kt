@@ -23,8 +23,8 @@ class BookingViewModel @Inject constructor(private val bookingRepository: Bookin
     val fetchError: StateFlow<Boolean>
         get() = _fetchError
 
-    private val _isBookingCreationSuccess = MutableStateFlow(false)
-    val isBookingCreationSuccess: StateFlow<Boolean>
+    private val _isBookingCreationSuccess = MutableStateFlow<Boolean?>(null)
+    val isBookingCreationSuccess: StateFlow<Boolean?>
         get() = _isBookingCreationSuccess
 
     fun getBookings() {
