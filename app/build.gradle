@@ -30,6 +30,7 @@ android {
 
         debug {
             buildConfigField("String", "BASE_URL", BASEURL)
+            buildConfigField("int", "QUANTITY_OF_BOOKINGS_AT_A_TIME", QUANTITY_OF_BOOKINGS_AT_A_TIME)
         }
     }
     compileOptions {
